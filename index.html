@@ -44,109 +44,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Evita que el header fijo tape las secciones al hacer clic */
-        section {
-            scroll-margin-top: 100px;
-        }
-
-        /* Scroll Animations (Rápidas y dinámicas) */
-        .reveal-element {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-        .reveal-element.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Smooth Transition Classes for Form Swap */
-        .form-transition {
-            transition: opacity 0.35s ease-in-out;
-        }
-
-        /* Glassmorphism & Glow */
-        .glass-card {
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(51, 65, 85, 0.5);
-            transition: all 0.25s ease;
-        }
-        .glass-card:hover {
-            border-color: rgba(255, 0, 0, 0.5);
-            box-shadow: 0 10px 30px -10px rgba(255, 0, 0, 0.15);
-        }
-
-        /* Interactive Slider Elements */
-        .slider-container {
-            position: relative;
-            overflow: hidden;
-            user-select: none;
-        }
-        .slider-before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 50%;
-            overflow: hidden;
-            z-index: 10;
-        }
-        .slider-handle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 3px;
-            background-color: #ff0000;
-            z-index: 20;
-            transform: translateX(-50%);
-            cursor: ew-resize;
-        }
-        .slider-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 44px;
-            height: 44px;
-            background-color: #0f172a;
-            border: 2px solid #ff0000;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            box-shadow: 0 0 15px rgba(255,0,0,0.4);
-        }
-    </style>
-</head>
-<body id="top" class="bg-slate950 text-slate-300 font-sans antialiased selection:bg-red-600 selection:text-white overflow-x-hidden">
-
-  <!-- Header Minimalista con Menú Animado y Botón de Facebook Visible -->
-    <header class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80">
+       
+        <!-- Header Minimalista con Licencia Sutil y Fondo Transparente al Scroll -->
+    <header id="site-header" class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- Izquierda: Logo y Licencia -->
+            <!-- Izquierda: Logotipo Tipográfico y Licencia -->
             <div class="flex items-center gap-6">
-                <!-- Logo Principal -->
-                <a href="#" class="flex items-center gap-3">
-                    <img src="logo.png" alt="Like The Big Ones Construction Logo" class="h-10 w-auto object-contain">
+                <!-- Logo en Texto Estilizado -->
+                <a href="#" class="flex flex-col group">
+                    <span class="font-serif text-base sm:text-lg font-bold tracking-wider text-white">
+                        LIKE THE BIG ONES <span class="text-red-600">CONSTRUCTION</span>
+                    </span>
+                    <span class="text-[9px] sm:text-[10px] font-mono tracking-widest text-slate-400 uppercase">
+                        Minnesota Residential Builder
+                    </span>
                 </a>
                 
-                <!-- Licencia de MN -->
-                <div class="hidden sm:inline-flex items-center gap-1.5 bg-slate-900/80 border border-slate-800 px-3 py-1 rounded text-xs font-mono text-slate-300">
-                    <i class="fa-solid fa-shield-halved text-red-500"></i>
-                    <span>MN License: <strong class="text-white">#BC810449</strong></span>
+                <!-- Licencia de MN (Sin escudo, tono sobrio y fondo transparente al hacer scroll) -->
+                <div id="license-badge" class="hidden sm:inline-flex items-center bg-slate-900/80 border border-slate-800 px-3 py-1 rounded text-xs font-mono text-slate-400 transition-all duration-300">
+                    <span>MN License: <strong class="text-slate-300 font-normal">#BC810449</strong></span>
                 </div>
             </div>
 
-            <!-- Derecha: Botón de Facebook + Botón de Menú Hamburguesa (Visibles en Móvil y PC) -->
+            <!-- Derecha: Botón de Facebook + Menú Hamburguesa -->
             <div class="flex items-center gap-3">
                 <!-- Botón de Facebook -->
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page" class="flex items-center justify-center w-11 h-11 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-white transition-all shadow-sm">
-                    <i class="fa-brands fa-facebook text-red-500 text-base"></i>
+                    <i class="fa-brands fa-facebook text-red-500/80 text-base"></i>
                 </a>
 
                 <!-- Botón Menú Hamburguesa -->
@@ -169,6 +94,62 @@
         </div>
     </header>
 
+    <!-- Script JavaScript para Transparencia en Header y Licencia al hacer Scroll -->
+    <script>
+        const header = document.getElementById('site-header');
+        const licenseBadge = document.getElementById('license-badge');
+        const menuBtn = document.getElementById('menu-btn');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const menuLinks = document.querySelectorAll('.menu-link');
+
+        // Efecto de transparencia al hacer scroll hacia abajo
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 30) {
+                header.classList.remove('bg-slate-950/90', 'border-slate-800/80', 'backdrop-blur-md');
+                header.classList.add('bg-transparent', 'border-transparent', 'backdrop-blur-none');
+                
+                licenseBadge.classList.remove('bg-slate-900/80', 'border-slate-800');
+                licenseBadge.classList.add('bg-transparent', 'border-transparent');
+            } else {
+                header.classList.remove('bg-transparent', 'border-transparent', 'backdrop-blur-none');
+                header.classList.add('bg-slate-950/90', 'border-slate-800/80', 'backdrop-blur-md');
+                
+                licenseBadge.classList.remove('bg-transparent', 'border-transparent');
+                licenseBadge.classList.add('bg-slate-900/80', 'border-slate-800');
+            }
+        });
+
+        // Control de apertura del menú
+        function toggleMenu() {
+            const isOpen = dropdownMenu.classList.contains('opacity-100');
+            
+            if (isOpen) {
+                dropdownMenu.classList.remove('opacity-100', 'translate-y-0');
+                dropdownMenu.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+                menuIcon.classList.remove('fa-xmark', 'rotate-90');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                dropdownMenu.classList.remove('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+                dropdownMenu.classList.add('opacity-100', 'translate-y-0');
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark', 'rotate-90');
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                dropdownMenu.classList.remove('opacity-100', 'translate-y-0');
+                dropdownMenu.classList.add('opacity-0', 'translate-y-[-10px]', 'pointer-events-none');
+                menuIcon.classList.remove('fa-xmark', 'rotate-90');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+    </script>
+
+        
     <!-- Script JavaScript para Animaciones -->
     <script>
         const menuBtn = document.getElementById('menu-btn');
