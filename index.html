@@ -679,26 +679,59 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate950 border-t border-slate800 py-12 text-slate-400 text-xs pb-24 sm:pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-2">
-                <span class="font-bold text-white tracking-wider uppercase">Like the Big Ones Construction LLC</span>
-            </div>
+    <!-- Footer Profesional y Organizado -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 text-slate-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <div class="flex items-center gap-6 font-mono text-slate-300">
-                <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-red-600"></i> MN License #BC810449</span>
+            <!-- Contenedor Principal en Grid (Se adapta de 1 columna en móvil a 3 columnas en PC) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pb-12 border-b border-slate-800/60">
                 
-                <!-- BOTÓN FACEBOOK FOOTER -->
-                <a href="https://www.facebook.com/Likethebig1s?mibextid=wwXIfr&rdid=ITzO831ZYQxaKVyE&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14epSscfNCX%2F%3Fmibextid%3DwwXIfr#" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-blue-500 transition-colors flex items-center gap-1.5 text-xs font-sans">
-                    <i class="fa-brands fa-facebook text-sm"></i>
-                    <span>Facebook</span>
-                </a>
+                <!-- Columna 1: Identidad y Licencia -->
+                <div class="space-y-4">
+                    <h3 class="font-serif text-xl font-bold text-white tracking-wide">
+                        Like The Big Ones <span class="text-red-600">Construction LLC</span>
+                    </h3>
+                    <p class="text-sm text-slate-400 font-light leading-relaxed">
+                        Professional residential building and general contracting services throughout Minnesota. Quality craftsmanship built to last.
+                    </p>
+                    <div class="inline-block bg-slate-900 border border-slate-800 px-3 py-1.5 rounded text-xs font-mono text-slate-300">
+                        MN License: <span class="text-white font-bold">#BC810449</span>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces de Navegación -->
+                <div class="space-y-4">
+                    <h4 class="text-white text-xs font-mono uppercase tracking-widest">Navigation</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#reviews" class="hover:text-white transition-colors">Client Reviews</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Conexión y Redes Sociales -->
+                <div class="space-y-4">
+                    <h4 class="text-white text-xs font-mono uppercase tracking-widest">Connect</h4>
+                    <p class="text-sm text-slate-400">
+                        Follow our latest projects and updates on our official social channel.
+                    </p>
+                    <div>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-white text-xs font-bold uppercase tracking-wider rounded transition-colors shadow-sm">
+                            <i class="fa-brands fa-facebook text-red-500 text-sm"></i>
+                            <span>Facebook Page</span>
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="text-slate-500 text-center md:text-right">
-                &copy; 2026 Like the Big Ones Construction LLC. All rights reserved.
+            <!-- Copyright y Nota Legal Inferior -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
+                <p>&copy; 2026 Like The Big Ones Construction LLC. All rights reserved.</p>
+                <p class="text-slate-600">Designed for High-End Performance in Minnesota</p>
             </div>
+
         </div>
     </footer>
 
