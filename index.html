@@ -43,10 +43,78 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- CSS Propiamente Dicho (Etiqueta Style Correcta) -->
     <style>
-    
-     
-<!-- Header Minimalista con Licencia Sutil y Fondo Transparente al Scroll -->
+        /* Evita que el header fijo tape las secciones al hacer clic */
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* Scroll Animations (Rápidas y dinámicas) */
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-element.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 41, 59, 0.8);
+        }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            touch-action: pan-y;
+        }
+        .slider-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 50%;
+            overflow: hidden;
+        }
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #ef4444;
+            cursor: ew-resize;
+            z-index: 20;
+            transform: translateX(-50%);
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 36px;
+            height: 36px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+        .form-transition {
+            transition: opacity 0.35s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate950 text-slate-100 font-sans antialiased selection:bg-red-600 selection:text-white">
+
+    <!-- Header Minimalista con Licencia Sutil y Fondo Transparente al Scroll -->
     <header id="site-header" class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
@@ -87,7 +155,7 @@
             <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col space-y-4 text-center md:text-left">
                 <div class="text-xs font-mono text-slate-500 uppercase tracking-widest mb-2">Navegación del Sitio</div>
                 <a href="#services" class="menu-link text-lg font-medium text-slate-300 hover:text-white hover:translate-x-1 transition-all py-2 border-b border-slate-900">Services</a>
-                <a href="#transformations" class="menu-link text-lg font-medium text-slate-300 hover:text-white hover:translate-x-1 transition-all py-2 border-b border-slate-900">Transformations</a>
+                <a href="#transformation" class="menu-link text-lg font-medium text-slate-300 hover:text-white hover:translate-x-1 transition-all py-2 border-b border-slate-900">Transformations</a>
                 <a href="#reviews" class="menu-link text-lg font-medium text-slate-300 hover:text-white hover:translate-x-1 transition-all py-2 border-b border-slate-900">Client Reviews</a>
                 <a href="#faq" class="menu-link text-lg font-medium text-slate-300 hover:text-white hover:translate-x-1 transition-all py-2 border-b border-slate-900">FAQ</a>
                 <a href="#contact" class="menu-link text-lg font-medium text-red-500 hover:text-red-400 hover:translate-x-1 transition-all py-2">Contact & Inquire</a>
@@ -149,6 +217,7 @@
             });
         });
     </script>
+
     <!-- HERO SECTION -->
     <section class="relative bg-slate950 py-24 lg:py-32 overflow-hidden border-b border-slate800/60 bg-cover bg-center bg-no-repeat" style="background-image: url('hero-stone.jpg');">
         <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-[2px]"></div>
@@ -159,7 +228,7 @@
                     Minnesota Residential Construction
                 </h1>
                 <p class="text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-8 max-w-2xl">
-                    Built on over 10 years of hands-on trade experience and 4 years of specialized  subcontracting Record. Licensed in 2026 as a Residential Contractor serving Minnesota homeowners.
+                    Built on over 10 years of hands-on trade experience and 4 years of specialized subcontracting Record. Licensed in 2026 as a Residential Contractor serving Minnesota homeowners.
                 </p>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10 max-w-xl">
@@ -199,7 +268,6 @@
             </div>
 
             <div class="max-w-4xl mx-auto glass-card p-6 sm:p-8 rounded-2xl shadow-2xl reveal-element">
-                <!-- Paso 1: Tipo de Proyecto -->
                 <div class="mb-8">
                     <label class="block text-xs uppercase font-bold text-slate-300 mb-4 tracking-wider">Step 1: Choose Construction Area</label>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -237,7 +305,6 @@
                     </div>
                 </div>
 
-                <!-- Paso 2: Objetivos (Selección Múltiple) -->
                 <div class="mb-8">
                     <label class="block text-xs uppercase font-bold text-slate-300 mb-2 tracking-wider">Step 2: Select Project Goals (Select all that apply)</label>
                     <p class="text-[11px] text-slate-400 mb-4">You can click multiple goals to specify your exact project vision.</p>
@@ -254,7 +321,6 @@
                     </div>
                 </div>
 
-                <!-- Panel de Resultado -->
                 <div id="intent-result" class="hidden pt-6 border-t border-slate800 flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="text-left">
                         <span class="text-[10px] uppercase font-mono tracking-wider text-red-500 font-bold block mb-1">Tailored Recommendation</span>
@@ -417,7 +483,7 @@
         </div>
     </section>
 
-<!-- Google Reviews Exclusivo (Con Widget Automático de Elfsight) -->
+    <!-- Google Reviews Exclusivo (Con Widget Automático de Elfsight) -->
     <section id="reviews" class="py-24 bg-slate900/40 border-b border-slate800/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 pb-6 border-b border-slate800/80 reveal-element">
@@ -436,13 +502,10 @@
                 </div>
             </div>
 
-            <!-- INICIO DEL WIDGET CORRECTO DE ELFSIGHT -->
             <div class="reveal-element">
                 <script src="https://elfsightcdn.com/platform.js" async></script>
                 <div class="elfsight-app-ce6692bc-5293-4b5f-b3d6-ca58acd9c79d" data-elfsight-app-lazy></div>
             </div>
-            <!-- FIN DEL WIDGET -->
-
         </div>
     </section>
 
@@ -456,7 +519,6 @@
             </div>
 
             <div class="space-y-4 reveal-element">
-                <!-- FAQ Item 1 -->
                 <div class="glass-card rounded-xl overflow-hidden border border-slate800 transition-all">
                     <button type="button" onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between gap-4 text-white font-semibold text-sm sm:text-base focus:outline-none">
                         <span>Do you handle city building permits in Minnesota?</span>
@@ -467,7 +529,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 2 -->
                 <div class="glass-card rounded-xl overflow-hidden border border-slate800 transition-all">
                     <button type="button" onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between gap-4 text-white font-semibold text-sm sm:text-base focus:outline-none">
                         <span>Are you fully insured for residential work?</span>
@@ -478,7 +539,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 3 -->
                 <div class="glass-card rounded-xl overflow-hidden border border-slate800 transition-all">
                     <button type="button" onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between gap-4 text-white font-semibold text-sm sm:text-base focus:outline-none">
                         <span>How long does a typical kitchen or porch project take?</span>
@@ -489,7 +549,6 @@
                     </div>
                 </div>
 
-                <!-- FAQ Item 4 -->
                 <div class="glass-card rounded-xl overflow-hidden border border-slate800 transition-all">
                     <button type="button" onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between gap-4 text-white font-semibold text-sm sm:text-base focus:outline-none">
                         <span>How do we start the consultation and estimate process?</span>
@@ -503,7 +562,7 @@
         </div>
     </section>
 
-    <!-- Direct Contact Section (Con transición suave y altura natural corregida) -->
+    <!-- Direct Contact Section -->
     <section id="contact" class="py-24 bg-slate950">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-2xl mx-auto text-center mb-12 reveal-element">
@@ -514,15 +573,12 @@
             </div>
 
             <div class="max-w-xl mx-auto glass-card p-6 sm:p-8 rounded-2xl shadow-xl reveal-element">
-                
-                <!-- CONTENEDOR DEL FORMULARIO -->
                 <div id="contact-form-container" class="form-transition opacity-100">
                     <form id="ajax-form" action="https://formspree.io/f/mzeeplaw" method="POST" class="space-y-5">
                         <div class="hidden" aria-hidden="true">
                             <input type="text" name="website_hp" tabindex="-1" autocomplete="off">
                         </div>
 
-                        <!-- CAMPO OCULTO PARA ENVIAR TODAS LAS METAS SELECCIONADAS A FORMSPREE -->
                         <input type="hidden" id="form-goals-hidden" name="primary_goals" value="">
 
                         <div>
@@ -535,7 +591,6 @@
                         </div>
                         <div>
                             <label class="block text-xs uppercase font-semibold text-slate-300 mb-2">Phone Number</label>
-                            <!-- CAMPO DE TELÉFONO CON AUTO-FORMATO GUIONES -->
                             <input type="tel" id="phone-input" name="phone" required maxlength="14" oninput="formatPhoneNumber(this)" class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="111-222-3433">
                         </div>
                         <div>
@@ -544,7 +599,6 @@
                         </div>
                         <div>
                             <label class="block text-xs uppercase font-semibold text-slate-300 mb-2">Primary Scope</label>
-                            <!-- SELECT CON OPCIÓN OTHER -->
                             <select id="form-scope-select" name="scope" required onchange="checkOtherScope(this)" class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors">
                                 <option value="" disabled selected>Select Scope of Work</option>
                                 <option value="kitchen">Kitchen Remodeling</option>
@@ -557,10 +611,9 @@
                             </select>
                         </div>
 
-                        <!-- CAMPO DINÁMICO QUE SE MUESTRA SOLO SI ELIGEN OTHER -->
                         <div id="other-scope-container" class="hidden">
                             <label class="block text-xs uppercase font-semibold text-red-400 mb-2">Specify Other Project Type</label>
-                            <input type="text" id="other-scope-input" name="other_scope_details" class="w-full bg-slate950 border border-red-900/60 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="e.g. Basement Finishing, Garage Conversion, Custom Millwork...">
+                            <input type="text" id="other-scope-input" name="other_scope_details" class="w-full bg-slate950 border border-red-900/60 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="e.g. Basement Finishing, Garage Conversion...">
                         </div>
 
                         <div>
@@ -574,7 +627,6 @@
                     </form>
                 </div>
 
-                <!-- TARJETA DE AGRADECIMIENTO CON ALTURA Y DISEÑO IMPECABLE -->
                 <div id="form-success-card" class="hidden form-transition opacity-0 text-center py-12 px-4 space-y-6">
                     <div class="w-16 h-16 bg-red-600/20 border-2 border-red-600 text-red-500 rounded-full flex items-center justify-center mx-auto text-2xl shadow-lg">
                         <i class="fa-solid fa-check"></i>
@@ -589,7 +641,6 @@
                         Aceptar
                     </button>
                 </div>
-
             </div>
         </div>
     </section>
@@ -601,9 +652,7 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <h3 id="modal-title" class="font-serif text-2xl font-bold text-white mb-4">Project Gallery</h3>
-            <div id="modal-content" class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[70vh] overflow-y-auto pr-2">
-                <!-- Dynamic images injected via JS -->
-            </div>
+            <div id="modal-content" class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-[70vh] overflow-y-auto pr-2"></div>
         </div>
     </div>
 
@@ -615,7 +664,7 @@
         <img id="lightbox-img" src="" alt="Zoomed Project" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
     </div>
 
-    <!-- BANNER DE COOKIES (CON DECLINE Y ACCEPT) -->
+    <!-- BANNER DE COOKIES -->
     <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-md border-t border-slate800 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
         <div class="text-xs text-slate-300 text-center sm:text-left max-w-3xl">
             <i class="fa-solid fa-shield-halved text-red-500 mr-2"></i>
@@ -632,14 +681,10 @@
         </div>
     </div>
 
- <!-- <!-- Footer Profesional, Compacto y Elegante -->
+    <!-- Footer Profesional, Compacto y Elegante -->
     <footer class="bg-slate-950 border-t border-slate-800/60 text-slate-400 py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Contenedor Principal en Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-slate-800/40">
-                
-                <!-- Columna 1: Identidad y Licencia -->
                 <div class="space-y-3">
                     <h3 class="font-serif text-lg font-bold text-white tracking-wide">
                         Like The Big Ones <span class="text-red-600/90">Construction LLC</span>
@@ -649,18 +694,17 @@
                     </div>
                 </div>
 
-                <!-- Columna 2: Enlaces de Navegación -->
                 <div class="space-y-3">
                     <h4 class="text-slate-300 text-xs font-mono uppercase tracking-widest">Navigation</h4>
                     <ul class="space-y-1.5 text-sm">
-                        <li><a href="#about" class="hover:text-white transition-colors">About Us</a></li>
                         <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#transformation" class="hover:text-white transition-colors">Transformations</a></li>
                         <li><a href="#reviews" class="hover:text-white transition-colors">Client Reviews</a></li>
+                        <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
                         <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Columna 3: Conexión y Redes Sociales -->
                 <div class="space-y-3">
                     <h4 class="text-slate-300 text-xs font-mono uppercase tracking-widest">Connect</h4>
                     <p class="text-xs text-slate-400">
@@ -673,21 +717,17 @@
                         </a>
                     </div>
                 </div>
-
             </div>
 
-            <!-- Copyright y Crédito de Diseño Inferior -->
             <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
                 <p>&copy; 2026 Like The Big Ones Construction LLC. All rights reserved.</p>
                 <p class="text-slate-400">Designed & Developed by <span class="text-slate-300 font-medium">Like The Big Ones Construction LLC</span></p>
             </div>
-
         </div>
     </footer>
 
     <!-- INTERACTIVE JAVASCRIPT -->
     <script>
-        // ENVÍO DE FORMULARIO POR AJAX CON TRANSICIÓN SUAVE (SIN COLAPSAR CONTENEDOR)
         const ajaxForm = document.getElementById('ajax-form');
         if (ajaxForm) {
             ajaxForm.addEventListener('submit', async function(e) {
@@ -703,9 +743,7 @@
                     const response = await fetch(ajaxForm.action, {
                         method: 'POST',
                         body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
+                        headers: { 'Accept': 'application/json' }
                     });
 
                     if (response.ok) {
@@ -734,7 +772,6 @@
             });
         }
 
-        // BOTÓN "ACEPTAR" CON TRANSICIÓN SUAVE PARA REGRESAR A LA NORMALIDAD
         function resetContactForm() {
             const formContainer = document.getElementById('contact-form-container');
             const successCard = document.getElementById('form-success-card');
@@ -749,7 +786,6 @@
             }, 350);
         }
 
-        // GESTIÓN DE COOKIES (ACCEPT Y DECLINE)
         function acceptCookies() {
             const banner = document.getElementById('cookie-banner');
             banner.classList.add('hidden');
@@ -769,7 +805,6 @@
             }
         });
 
-        // MOSTRAR/OCULTAR CAMPO "OTHER" EN FORMULARIO
         function checkOtherScope(selectElem) {
             const container = document.getElementById('other-scope-container');
             const input = document.getElementById('other-scope-input');
@@ -783,20 +818,16 @@
             }
         }
 
-        // FUNCIÓN TOGGLE PARA PREGUNTAS FRECUENTES (FAQ)
         function toggleFaq(button) {
             const answer = button.nextElementSibling;
             const icon = button.querySelector('i');
-            
             answer.classList.toggle('hidden');
             icon.classList.toggle('rotate-180');
         }
 
-        // FUNCIÓN DE FORMATO DE TELÉFONO AUTOMÁTICO CON GUIONES (111-222-3433)
         function formatPhoneNumber(input) {
             let value = input.value.replace(/\D/g, '');
             if (value.length > 10) value = value.slice(0, 10);
-
             if (value.length > 6) {
                 input.value = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6)}`;
             } else if (value.length > 3) {
@@ -806,7 +837,6 @@
             }
         }
 
-        // LÓGICA DEL SELECTOR DE INTENCIÓN (SELECCIÓN MÚLTIPLE)
         let selectedScope = null;
         let selectedGoalsMap = {};
 
@@ -860,10 +890,7 @@
             }
 
             let goalsListText = Object.values(selectedGoalsMap).join(', ');
-            
-            if (goalsHiddenElem) {
-                goalsHiddenElem.value = goalsListText;
-            }
+            if (goalsHiddenElem) goalsHiddenElem.value = goalsListText;
 
             if (messageElem && !messageElem.value.includes('[Client Goals:')) {
                 messageElem.value = `[Client Goals: ${goalsListText}] - ` + messageElem.value;
@@ -872,31 +899,17 @@
             scrollToContact();
         }
 
-        // Smooth Scrolling Global para Desktop, Móvil y Logo
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     e.preventDefault();
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (mobileMenu) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
 
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Smooth scroll to contact
         function scrollToContact() {
             const contactSection = document.getElementById('contact');
             if (contactSection) {
@@ -904,57 +917,19 @@
             }
         }
 
-        // Modal Project Galleries Data
         const projectData = {
-            kitchen: {
-                title: "Kitchen Remodeling Projects",
-                images: [
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80"
-                ]
-            },
-            bathroom: {
-                title: "Bathroom Remodeling Projects",
-                images: [
-                    "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80"
-                ]
-            },
-            living: {
-                title: "Living Room Remodeling Projects",
-                images: [
-                    "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"
-                ]
-            },
-            deck: {
-                title: "Custom Deck Building Projects",
-                images: [
-                    "https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&q=80"
-                ]
-            },
-            porch: {
-                title: "All-Season Porch Projects",
-                images: [
-                    "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80"
-                ]
-            },
-            addition: {
-                title: "Home Addition Projects",
-                images: [
-                    "https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80",
-                    "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
-                ]
-            }
+            kitchen: { title: "Kitchen Remodeling Projects", images: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=80"] },
+            bathroom: { title: "Bathroom Remodeling Projects", images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80"] },
+            living: { title: "Living Room Remodeling Projects", images: ["https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"] },
+            deck: { title: "Custom Deck Building Projects", images: ["https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&q=80"] },
+            porch: { title: "All-Season Porch Projects", images: ["https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80"] },
+            addition: { title: "Home Addition Projects", images: ["https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"] }
         };
 
         function openModal(category) {
             const modal = document.getElementById('project-modal');
             const modalTitle = document.getElementById('modal-title');
             const modalContent = document.getElementById('modal-content');
-            
             const data = projectData[category];
             if (!data) return;
 
@@ -967,7 +942,6 @@
                     </div>
                 </div>
             `).join('');
-
             modal.classList.remove('hidden');
         }
 
@@ -975,7 +949,6 @@
             document.getElementById('project-modal').classList.add('hidden');
         }
 
-        // Lightbox Functions for Zoom
         function openLightbox(imgSrc) {
             const lightbox = document.getElementById('lightbox-modal');
             const lightboxImg = document.getElementById('lightbox-img');
@@ -987,19 +960,13 @@
             document.getElementById('lightbox-modal').classList.add('hidden');
         }
 
-        // Close modals on outside click
         window.onclick = function(event) {
             const modal = document.getElementById('project-modal');
             const lightbox = document.getElementById('lightbox-modal');
-            if (event.target === modal) {
-                closeModal();
-            }
-            if (event.target === lightbox) {
-                closeLightbox();
-            }
+            if (event.target === modal) closeModal();
+            if (event.target === lightbox) closeLightbox();
         }
 
-        // Before / After Slider Logic
         const slider = document.getElementById('image-slider');
         const beforeElem = document.getElementById('slider-before-elem');
         const handleElem = document.getElementById('slider-handle-elem');
@@ -1015,23 +982,22 @@
             handleElem.style.left = percentage + '%';
         }
 
-        slider.addEventListener('pointerdown', (e) => {
-            isDragging = true;
-            slider.setPointerCapture(e.pointerId);
-            updateSliderPosition(e.clientX);
-        });
+        if (slider) {
+            slider.addEventListener('pointerdown', (e) => {
+                isDragging = true;
+                slider.setPointerCapture(e.pointerId);
+                updateSliderPosition(e.clientX);
+            });
+            slider.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                updateSliderPosition(e.clientX);
+            });
+            slider.addEventListener('pointerup', (e) => {
+                isDragging = false;
+                try { slider.releasePointerCapture(e.pointerId); } catch(err) {}
+            });
+        }
 
-        slider.addEventListener('pointermove', (e) => {
-            if (!isDragging) return;
-            updateSliderPosition(e.clientX);
-        });
-
-        slider.addEventListener('pointerup', (e) => {
-            isDragging = false;
-            try { slider.releasePointerCapture(e.pointerId); } catch(err) {}
-        });
-
-        // Switch Transformation Type
         function switchTransformation(type) {
             const btnKitchen = document.getElementById('btn-trans-kitchen');
             const btnExterior = document.getElementById('btn-trans-exterior');
@@ -1051,7 +1017,6 @@
             }
         }
 
-        // Scroll Reveal Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
