@@ -37,84 +37,7 @@
         }
     </script>
     
-    <!-- Google Fonts & FontAwesome -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- CSS Propiamente Dicho (Etiqueta Style Correcta) -->
-    <style>
-        /* Evita que el header fijo tape las secciones al hacer clic */
-        section {
-            scroll-margin-top: 100px;
-        }
-
-        /* Scroll Animations (Rápidas y dinámicas) */
-        .reveal-element {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
-        }
-        .reveal-element.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .glass-card {
-            background: rgba(15, 23, 42, 0.6);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(30, 41, 59, 0.8);
-        }
-
-        .slider-container {
-            position: relative;
-            overflow: hidden;
-            user-select: none;
-            touch-action: pan-y;
-        }
-        .slider-before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 50%;
-            overflow: hidden;
-        }
-        .slider-handle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: #ef4444;
-            cursor: ew-resize;
-            z-index: 20;
-            transform: translateX(-50%);
-        }
-        .slider-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 36px;
-            height: 36px;
-            background: #ef4444;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-        }
-        .form-transition {
-            transition: opacity 0.35s ease-in-out;
-        }
-    </style>
-</head>
-<body class="bg-slate950 text-slate-100 font-sans antialiased selection:bg-red-600 selection:text-white">
-
-    <!-- Header Minimalista con Licencia Sutil y Fondo Transparente al Scroll -->
+    <!-- Header Minimalista con Transparencia Moderada al Hacer Scroll -->
     <header id="site-header" class="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
@@ -130,7 +53,7 @@
                     </span>
                 </a>
                 
-                <!-- Licencia de MN (Sin escudo, tono sobrio y fondo transparente al hacer scroll) -->
+                <!-- Licencia de MN -->
                 <div id="license-badge" class="hidden sm:inline-flex items-center bg-slate-900/80 border border-slate-800 px-3 py-1 rounded text-xs font-mono text-slate-400 transition-all duration-300">
                     <span>MN License: <strong class="text-slate-300 font-normal">#BC810449</strong></span>
                 </div>
@@ -163,7 +86,7 @@
         </div>
     </header>
 
-    <!-- Script JavaScript para Transparencia en Header y Licencia al hacer Scroll -->
+    <!-- Script JavaScript para Transparencia Moderada al hacer Scroll -->
     <script>
         const header = document.getElementById('site-header');
         const licenseBadge = document.getElementById('license-badge');
@@ -172,19 +95,19 @@
         const menuIcon = document.getElementById('menu-icon');
         const menuLinks = document.querySelectorAll('.menu-link');
 
-        // Efecto de transparencia al hacer scroll hacia abajo
+        // Efecto de semitransparencia (vidrio esmerilado) al hacer scroll hacia abajo
         window.addEventListener('scroll', () => {
             if (window.scrollY > 30) {
-                header.classList.remove('bg-slate-950/90', 'border-slate-800/80', 'backdrop-blur-md');
-                header.classList.add('bg-transparent', 'border-transparent', 'backdrop-blur-none');
+                header.classList.remove('bg-slate-950/90', 'border-slate-800/80');
+                header.classList.add('bg-slate-950/70', 'border-slate-800/40', 'backdrop-blur-md');
                 
                 licenseBadge.classList.remove('bg-slate-900/80', 'border-slate-800');
-                licenseBadge.classList.add('bg-transparent', 'border-transparent');
+                licenseBadge.classList.add('bg-slate-900/40', 'border-slate-800/40');
             } else {
-                header.classList.remove('bg-transparent', 'border-transparent', 'backdrop-blur-none');
+                header.classList.remove('bg-slate-950/70', 'border-slate-800/40');
                 header.classList.add('bg-slate-950/90', 'border-slate-800/80', 'backdrop-blur-md');
                 
-                licenseBadge.classList.remove('bg-transparent', 'border-transparent');
+                licenseBadge.classList.remove('bg-slate-900/40', 'border-slate-800/40');
                 licenseBadge.classList.add('bg-slate-900/80', 'border-slate-800');
             }
         });
