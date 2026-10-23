@@ -464,21 +464,32 @@
         </div>
     </section>
 
-    <!-- Google Reviews Exclusivo -->
+<!-- Google Reviews Exclusivo (Con Widget Automático de Elfsight) -->
     <section id="reviews" class="py-24 bg-slate900/40 border-b border-slate800/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="max-w-2xl mx-auto mb-12 reveal-element">
-                <h2 class="font-serif text-3xl font-bold text-white mb-3">Client Reviews</h2>
-                <p class="text-slate-400 text-sm font-light">Pronto verás aquí las opiniones y reseñas reales de nuestros clientes en Minnesota.</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12 pb-6 border-b border-slate800/80 reveal-element">
+                <div>
+                    <h2 class="font-serif text-3xl font-bold text-white mb-2">Verified Client Reviews</h2>
+                    <p class="text-slate-400 text-xs font-mono tracking-wider uppercase">
+                        Real-time feedback from Minnesota homeowners
+                    </p>
+                </div>
+
+                <div>
+                    <a href="https://g.page/r/CcGy9gI2-HUQECE/review" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded transition-transform hover:scale-105 shadow-lg shadow-red-950/40">
+                        <i class="fa-brands fa-google text-white text-sm"></i>
+                        <span>Write a Review on Google</span>
+                    </a>
+                </div>
             </div>
 
-            <!-- Botón para dejar reseña en Google -->
+            <!-- INICIO DEL WIDGET CORRECTO DE ELFSIGHT -->
             <div class="reveal-element">
-                <a href="https://g.page/r/CcGy9gI2-HUQECE/review" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider rounded transition-transform hover:scale-105 shadow-lg shadow-red-950/40">
-                    <i class="fa-brands fa-google text-white text-sm"></i>
-                    <span>Write a Review on Google</span>
-                </a>
+                <script src="https://elfsightcdn.com/platform.js" async></script>
+                <div class="elfsight-app-ce6692bc-5293-4b5f-b3d6-ca58acd9c79d" data-elfsight-app-lazy></div>
             </div>
+            <!-- FIN DEL WIDGET -->
+
         </div>
     </section>
 
