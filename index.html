@@ -64,6 +64,47 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(30, 41, 59, 0.8);
         }
+
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            touch-action: pan-y;
+        }
+        .slider-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #dc2626;
+            cursor: ew-resize;
+            z-index: 20;
+            pointer-events: none;
+        }
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 36px;
+            height: 36px;
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            border: 2px solid white;
+        }
     </style>
 </head>
 
@@ -257,7 +298,7 @@
                     </div>
 
                     <div class="slider-before" id="slider-before-elem" style="width: 50%;">
-                        <img id="before-img-elem" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80" alt="Before" class="absolute inset-0 w-full h-full object-cover max-w-none">
+                        <img id="before-img-elem" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80" alt="Before" class="absolute inset-0 w-full h-full object-cover max-w-none" style="width: 800px; height: 100%;">
                         <div class="absolute bottom-4 left-4 bg-slate950/80 border border-slate700 text-slate-200 px-3 py-1.5 rounded text-xs font-semibold tracking-wider uppercase backdrop-blur-sm">
                             Prior State
                         </div>
@@ -565,7 +606,7 @@
         <div class="text-xs text-slate-300 text-center sm:text-left max-w-3xl">
             <i class="fa-solid fa-shield-halved text-red-500 mr-2"></i>
             We use cookies to enhance your browsing experience, analyze site traffic, and optimize lead generation in compliance with Minnesota standards. 
-            <a href="#faq" class="text-white underline hover:text-red-500 ml-1">Learn more</a>
+            <a href="#faq" class="text-white underline hover:text-red-500 ml-1">Read More</a>
         </div>
         <div class="flex items-center gap-2">
             <button type="button" onclick="declineCookies()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs uppercase tracking-wider rounded transition-all whitespace-nowrap">
@@ -607,7 +648,8 @@
                         Follow our latest projects and updates on our official social channel.
                     </p>
                     <div>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800/70 text-slate-300 hover:text-white text-xs font-medium uppercase tracking-wider rounded transition-colors shadow-sm">
+                        <!-- Enlace oficial de Facebook actualizado -->
+                        <a href="https://www.facebook.com/Likethebig1s?mibextid=wwXIfr&rdid=dm9uwdToI6IJKOSj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14epSscfNCX%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800/70 text-slate-300 hover:text-white text-xs font-medium uppercase tracking-wider rounded transition-colors shadow-sm">
                             <i class="fa-brands fa-facebook text-blue-500 text-sm"></i>
                             <span>Facebook Page</span>
                         </a>
