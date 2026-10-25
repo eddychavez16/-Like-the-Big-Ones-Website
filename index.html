@@ -273,7 +273,7 @@
         </div>
     </section>
 
-    <!-- Transformations (Before / After Slider) -->
+   <!-- Transformations (Before / After Slider) -->
     <section id="transformation" class="py-24 bg-slate900/40 border-b border-slate800/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-10 reveal-element">
@@ -291,16 +291,16 @@
             </div>
 
             <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-slate800 shadow-2xl relative reveal-element">
-                <div class="slider-container h-[360px] sm:h-[500px] w-full bg-slate950 relative overflow-hidden" id="image-slider">
+                <div class="slider-container h-[360px] sm:h-[500px] w-full bg-slate950 relative overflow-hidden select-none" id="image-slider">
                     
-                    <!-- Imagen del Después (Fondo) -->
-                    <img id="after-img-elem" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="After" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                    <!-- Imagen del Después (Fondo) - Inicia al 50% de opacidad -->
+                    <img id="after-img-elem" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="After" class="absolute inset-0 w-full h-full object-cover pointer-events-none" style="opacity: 0.5;">
                     <div class="absolute bottom-4 right-4 bg-slate950/80 border border-slate700 text-slate-200 px-3 py-1.5 rounded text-xs font-semibold tracking-wider uppercase backdrop-blur-sm z-10">
                         After
                     </div>
 
-                    <!-- Imagen del Antes (Se desvanece de forma gradual) -->
-                    <div class="absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-75" id="slider-before-elem">
+                    <!-- Imagen del Antes (Frente) - Inicia al 50% de opacidad -->
+                    <div class="absolute inset-0 w-full h-full pointer-events-none" id="slider-before-elem" style="opacity: 0.5;">
                         <img id="before-img-elem" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80" alt="Before" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
                         <div class="absolute bottom-4 left-4 bg-slate950/80 border border-slate700 text-slate-200 px-3 py-1.5 rounded text-xs font-semibold tracking-wider uppercase backdrop-blur-sm z-10">
                             Before
@@ -318,6 +318,7 @@
             </div>
         </div>
     </section>
+ 
     <!-- Services Section -->
     <section id="services" class="py-24 bg-slate950 border-b border-slate800/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -668,7 +669,7 @@
         </div>
     </footer>
 
-   <!-- INTERACTIVE JAVASCRIPT -->
+  <!-- INTERACTIVE JAVASCRIPT -->
     <script>
         const header = document.getElementById('site-header');
         const licenseBadge = document.getElementById('license-badge');
@@ -956,9 +957,10 @@
             if (event.target === lightbox) closeLightbox();
         }
 
-        // --- ACTUALIZADO: Lógica del Slider con efecto de desvanecimiento (Fade) ---
+        // --- Lógica del Slider: Transición cruzada sincronizada (Cross-fade) ---
         const slider = document.getElementById('image-slider');
         const beforeElem = document.getElementById('slider-before-elem');
+        const afterImg = document.getElementById('after-img-elem');
         const handleElem = document.getElementById('slider-handle-elem');
         let isDragging = false;
 
@@ -970,12 +972,15 @@
             if (x > rect.width) x = rect.width;
             const percentage = (x / rect.width) * 100;
             
-            // Mueve la línea divisoria roja
+            // Mueve la línea divisoria roja y el botón
             handleElem.style.left = percentage + '%';
             
-            // Controla el desvanecimiento (opacidad) de la imagen "Before"
-            const opacityValue = 1 - (percentage / 100);
-            if (beforeElem) beforeElem.style.opacity = opacityValue;
+            // Sincroniza la opacidad de ambas imágenes (cross-fade perfecto)
+            const beforeOpacity = 1 - (percentage / 100);
+            const afterOpacity = percentage / 100;
+            
+            if (beforeElem) beforeElem.style.opacity = beforeOpacity;
+            if (afterImg) afterImg.style.opacity = afterOpacity;
         }
 
         if (slider) {
