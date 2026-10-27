@@ -40,7 +40,7 @@
     <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&amp;family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -57,6 +57,17 @@
         .reveal-element.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .form-transition {
+            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .form-transition {
+                transition: none;
+            }
         }
 
         .glass-card {
@@ -167,21 +178,18 @@
                     Minnesota Residential Construction
                 </h1>
                 <p class="text-base sm:text-lg text-slate-300 font-light leading-relaxed mb-8 max-w-2xl">
-                    Built on over 10 years of hands-on trade experience and 4 years of specialized subcontracting record. Licensed in 2026 as a Residential Contractor serving Minnesota homeowners.
+                    Built on over a decade of dedication, passion, and hands-on experience. Proudly licensed as a Residential Contractor, bringing warmth, trust, and exceptional care to homes across Minnesota.
                 </p>
 
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10 max-w-xl">
                     <div class="glass-card p-4 rounded-xl">
-                        <span class="block font-serif text-3xl font-bold text-white">10</span>
+                        <span class="block font-serif text-3xl font-bold text-white">10+</span>
                         <span class="text-[11px] text-slate-400 uppercase tracking-wider font-medium">Years Experience</span>
                     </div>
-                    <div class="glass-card p-4 rounded-xl">
-                        <span class="block font-serif text-3xl font-bold text-white">4</span>
-                        <span class="text-[11px] text-slate-400 uppercase tracking-wider font-medium">Years Subcontracting</span>
-                    </div>
                     <div class="glass-card p-4 rounded-xl col-span-2 sm:col-span-1">
-                        <span class="block font-serif text-3xl font-bold text-white">2026</span>
-                        <span class="text-[11px] text-slate-400 uppercase tracking-wider font-medium">MN Licensed (BC810449)</span>
+                        <span class="block text-center font-serif text-2xl font-bold text-white">MN</span>
+                        <span class="block text-center font-serif text-2xl font-bold text-white">Licensed</span>
+                        <span class="block text-center text-xs font-medium text-slate-300">BC810449</span>
                     </div>
                 </div>
 
@@ -202,19 +210,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-10 reveal-element">
                 <span class="text-red-500 font-mono text-xs uppercase tracking-widest font-bold">Quick Project Assistant</span>
-                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-1 mb-2">What Are You Looking to Build?</h2>
-                <p class="text-slate-400 text-xs sm:text-sm font-light">Select your planned project area and primary goals for a tailored consultation estimate.</p>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-white mt-1 mb-2">Select Your Project Goals &amp; Vision</h2>
+                <p class="text-slate-400 text-xs sm:text-sm font-light">Define your vision and goals to start your custom project estimate.</p>
             </div>
 
             <div class="max-w-4xl mx-auto glass-card p-6 sm:p-8 rounded-2xl shadow-2xl reveal-element">
                 <div class="mb-8">
-                    <label class="block text-xs uppercase font-bold text-slate-300 mb-4 tracking-wider">Step 1: Choose Construction Area</label>
+                    <p class="block text-xs uppercase font-bold text-slate-300 mb-4 tracking-wider">Step 1: Choose Construction Area</p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                         <button type="button" onclick="selectIntentScope('interior', this)" class="intent-scope-btn bg-slate950 hover:bg-slate800 border border-slate800 p-4 rounded-xl text-left transition-all flex flex-col justify-between group">
                             <i class="fa-solid fa-house-chimney-window text-2xl text-red-500 mb-3 group-hover:scale-110 transition-transform"></i>
                             <div>
                                 <h4 class="text-sm font-bold text-white">Interior Remodeling</h4>
-                                <p class="text-[11px] text-slate-400 mt-1">Kitchens, Bathrooms & Living</p>
+                                <p class="text-[11px] text-slate-400 mt-1">Kitchens, Bathrooms &amp; Living</p>
                             </div>
                         </button>
 
@@ -222,7 +230,7 @@
                             <i class="fa-solid fa-cloud-sun text-2xl text-red-500 mb-3 group-hover:scale-110 transition-transform"></i>
                             <div>
                                 <h4 class="text-sm font-bold text-white">Exterior Living</h4>
-                                <p class="text-[11px] text-slate-400 mt-1">Decks & 4-Season Porches</p>
+                                <p class="text-[11px] text-slate-400 mt-1">Decks &amp; 4-Season Porches</p>
                             </div>
                         </button>
 
@@ -245,7 +253,7 @@
                 </div>
 
                 <div class="mb-8">
-                    <label class="block text-xs uppercase font-bold text-slate-300 mb-2 tracking-wider">Step 2: Select Project Goals (Select all that apply)</label>
+                    <p class="block text-xs uppercase font-bold text-slate-300 mb-2 tracking-wider">Step 2: Select Project Goals (Select all that apply)</p>
                     <p class="text-[11px] text-slate-400 mb-4">You can click multiple goals to specify your exact project vision.</p>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <button type="button" onclick="toggleIntentGoal('resale', 'Increase Home Value', this)" class="intent-goal-btn bg-slate950 hover:bg-slate800 border border-slate800 py-3 px-4 rounded-lg text-xs font-semibold text-slate-300 text-center transition-all">
@@ -286,7 +294,7 @@
                     Kitchen Remodel
                 </button>
                 <button onclick="switchTransformation('exterior')" id="btn-trans-exterior" class="trans-tab flex-1 bg-slate900 hover:bg-slate800 text-slate-400 hover:text-white px-5 py-2.5 rounded text-xs font-bold uppercase tracking-wider transition-all border border-slate800 text-center">
-                    Exterior Remodel
+                    Exterior
                 </button>
             </div>
 
@@ -294,14 +302,14 @@
                 <div class="slider-container h-[360px] sm:h-[500px] w-full bg-slate950 relative overflow-hidden select-none" id="image-slider">
                     
                     <!-- Imagen del Después (Fondo - Visible al 100%) -->
-                    <img id="after-img-elem" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="After" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                    <img id="after-img-elem" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="After" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
                     <div class="absolute bottom-4 right-4 bg-slate950/80 border border-slate700 text-slate-200 px-3 py-1.5 rounded text-xs font-semibold tracking-wider uppercase backdrop-blur-sm z-10">
                         After
                     </div>
 
                     <!-- Imagen del Antes (Frente - Recortada dinámicamente con clip-path) -->
                     <div class="absolute inset-0 w-full h-full pointer-events-none" id="slider-before-elem" style="clip-path: inset(0 50% 0 0);">
-                        <img id="before-img-elem" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=80" alt="Before" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+                        <img id="before-img-elem" src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Before" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
                         <div class="absolute bottom-4 left-4 bg-slate950/80 border border-slate700 text-slate-200 px-3 py-1.5 rounded text-xs font-semibold tracking-wider uppercase backdrop-blur-sm z-10">
                             Before
                         </div>
@@ -323,8 +331,8 @@
     <section id="services" class="py-24 bg-slate950 border-b border-slate800/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-16 reveal-element">
-                <h2 class="font-serif text-3xl font-bold text-white mb-2">Capabilities & Scope</h2>
-                <p class="text-slate-400 text-sm font-light">Comprehensive residential general contracting services in Minnesota.</p>
+                <h2 class="font-serif text-3xl font-bold text-white mb-2">Capabilities &amp; Scope</h2>
+                <p class="text-slate-400 text-sm font-light">Gallery</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -457,7 +465,7 @@
             <div class="text-center mb-16 reveal-element">
                 <span class="text-red-500 font-mono text-xs uppercase tracking-widest font-bold">Client Knowledge Base</span>
                 <h2 class="font-serif text-3xl font-bold text-white mt-1 mb-3">Frequently Asked Questions</h2>
-                <p class="text-slate-400 text-sm font-light">Key answers regarding licensing, permits, and construction timelines in Minnesota.</p>
+                <p class="text-slate-400 text-sm font-light">Explore our state licensing, city permitting process, and construction timelines.</p>
             </div>
 
             <div class="space-y-4 reveal-element">
@@ -467,7 +475,7 @@
                         <i class="fa-solid fa-chevron-down text-red-500 text-xs transition-transform duration-300"></i>
                     </button>
                     <div class="faq-answer hidden px-5 pb-5 text-xs sm:text-sm text-slate-400 leading-relaxed font-light border-t border-slate800/60 pt-3">
-                        Yes. As a Licensed Residential Building Contractor in Minnesota (<span class="font-mono text-slate-200">MN License #BC810449</span>), we handle the complete permit filing, plan submissions, and required city building inspections from start to finish.
+                        Yes, we handle the entire process from start to finish. As a licensed Minnesota residential building contractor (<span class="font-mono text-slate-200">MN License #BC810449</span>), we take care of all city permits, filings, and mandatory inspections, handling every detail so you enjoy a completely seamless, stress-free experience.
                     </div>
                 </div>
 
@@ -477,17 +485,17 @@
                         <i class="fa-solid fa-chevron-down text-red-500 text-xs transition-transform duration-300"></i>
                     </button>
                     <div class="faq-answer hidden px-5 pb-5 text-xs sm:text-sm text-slate-400 leading-relaxed font-light border-t border-slate800/60 pt-3">
-                        Absolutely. Like the Big Ones Construction LLC carries active state licensing, general liability insurance, and workers' compensation coverage to ensure total safety and compliance for every homeowner project.
+                        Your home is your most valuable asset. That is why Like The Big Ones Construction LLC maintains active Minnesota state contractor licensing, comprehensive general liability coverage, and full workers' compensation—ensuring every project is fully protected, legally compliant, and executed with uncompromising standards, giving you complete peace of mind from day one.
                     </div>
                 </div>
 
                 <div class="glass-card rounded-xl overflow-hidden border border-slate800 transition-all">
                     <button type="button" onclick="toggleFaq(this)" class="w-full p-5 text-left flex items-center justify-between gap-4 text-white font-semibold text-sm sm:text-base focus:outline-none">
-                        <span>How long does a typical kitchen or porch project take?</span>
+                        <span>How long does a kitchen take?</span>
                         <i class="fa-solid fa-chevron-down text-red-500 text-xs transition-transform duration-300"></i>
                     </button>
                     <div class="faq-answer hidden px-5 pb-5 text-xs sm:text-sm text-slate-400 leading-relaxed font-light border-t border-slate800/60 pt-3">
-                        Project timelines vary based on structural scope and material selections. Major interior remodels typically range from 3 to 6 weeks, while custom decks or all-season porches average 2 to 4 weeks. A precise calendar schedule is provided with your contract.
+                        Timelines are custom to your specific project scope and material selections. Major interior remodels and custom bathroom builds typically range from 1 to 3 months. A precise calendar schedule is provided with your contract.
                     </div>
                 </div>
 
@@ -510,7 +518,7 @@
             <div class="max-w-2xl mx-auto text-center mb-12 reveal-element">
                 <h2 class="font-serif text-3xl font-bold text-white mb-3">Project Consultation</h2>
                 <p class="text-slate-400 text-sm font-light leading-relaxed">
-                    Submit details regarding your planned residential construction project. Our project supervision team will review your scope of work.
+                    Share your project specifications below. Our team will carefully review your details to prepare an estimate.
                 </p>
             </div>
 
@@ -524,23 +532,23 @@
                         <input type="hidden" id="form-goals-hidden" name="primary_goals" value="">
 
                         <div>
-                            <label class="block text-xs uppercase font-semibold text-slate-300 mb-2">Full Name</label>
-                            <input type="text" name="name" required class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="John Doe">
+                            <label for="name-input" class="block text-xs uppercase font-semibold text-slate-300 mb-2">Full Name</label>
+                            <input type="text" id="name-input" name="name" required class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="Alex example">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase font-semibold text-slate-300 mb-2">Email Address</label>
-                            <input type="email" name="email" required class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="johndoe@example.com">
+                            <label for="email-input" class="block text-xs uppercase font-semibold text-slate-300 mb-2">Email Address</label>
+                            <input type="email" id="email-input" name="email" required class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="alex@example.com">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase font-semibold text-slate-300 mb-2">Phone Number</label>
+                            <label for="phone-input" class="block text-xs uppercase font-semibold text-slate-300 mb-2">Phone Number</label>
                             <input type="tel" id="phone-input" name="phone" required maxlength="14" oninput="formatPhoneNumber(this)" class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="111-222-3433">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase font-semibold text-slate-300 mb-2">Property Address</label>
-                            <input type="text" name="address" required class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="123 Main St, Minneapolis, MN">
+                            <label for="address-input" class="block text-xs uppercase font-semibold text-slate-300 mb-2">Property Address</label>
+                            <input type="text" id="address-input" name="address" required class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="123 Main St, Minneapolis, MN">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase font-semibold text-slate-300 mb-2">Primary Scope</label>
+                            <label for="form-scope-select" class="block text-xs uppercase font-semibold text-slate-300 mb-2">Primary Scope</label>
                             <select id="form-scope-select" name="scope" required onchange="checkOtherScope(this)" class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors">
                                 <option value="" disabled selected>Select Scope of Work</option>
                                 <option value="kitchen">Kitchen Remodeling</option>
@@ -554,12 +562,12 @@
                         </div>
 
                         <div id="other-scope-container" class="hidden">
-                            <label class="block text-xs uppercase font-semibold text-red-400 mb-2">Specify Other Project Type</label>
+                            <label for="other-scope-input" class="block text-xs uppercase font-semibold text-red-400 mb-2">Specify Other Project Type</label>
                             <input type="text" id="other-scope-input" name="other_scope_details" class="w-full bg-slate950 border border-red-900/60 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="e.g. Basement Finishing, Garage Conversion...">
                         </div>
 
                         <div>
-                            <label class="block text-xs uppercase font-semibold text-slate-300 mb-2">Project Brief</label>
+                            <label for="form-message-text" class="block text-xs uppercase font-semibold text-slate-300 mb-2">Project Brief</label>
                             <textarea id="form-message-text" name="message" rows="4" required class="w-full bg-slate950 border border-slate800 rounded px-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" placeholder="Describe the project details..."></textarea>
                         </div>
 
@@ -574,13 +582,13 @@
                         <i class="fa-solid fa-check"></i>
                     </div>
                     <div class="space-y-3">
-                        <h3 class="font-serif text-2xl font-bold text-white tracking-wide">¡Gracias por su consulta!</h3>
+                        <h3 class="font-serif text-2xl font-bold text-white tracking-wide">Thank You for Reaching Out</h3>
                         <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light max-w-md mx-auto">
-                            Nuestro equipo lo va a revisar lo más rápido posible y gracias por contactarte con Like the Big Ones Construction LLC.
+                            Our team will review your project details as soon as possible. Thank you for contacting Like the Big Ones Construction LLC.
                         </p>
                     </div>
                     <button type="button" onclick="resetContactForm()" class="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider rounded transition-transform hover:scale-105 shadow-lg">
-                        Aceptar
+                        Close
                     </button>
                 </div>
             </div>
@@ -603,7 +611,7 @@
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl p-2 z-50 bg-slate-900/80 rounded-full w-10 h-10 flex items-center justify-center border border-slate-700">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <img id="lightbox-img" src="" alt="Zoomed Project" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+        <img id="lightbox-img" alt="Zoomed Project" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
     </div>
 
     <!-- BANNER DE COOKIES -->
@@ -618,7 +626,7 @@
                 Decline
             </button>
             <button type="button" onclick="acceptCookies()" class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white font-bold text-xs uppercase tracking-wider rounded transition-all whitespace-nowrap shadow-md">
-                Accept & Continue
+                Accept &amp; Continue
             </button>
         </div>
     </div>
@@ -654,7 +662,7 @@
                     </p>
                     <div>
                         <!-- Enlace oficial de Facebook actualizado -->
-                        <a href="https://www.facebook.com/Likethebig1s?mibextid=wwXIfr&rdid=dm9uwdToI6IJKOSj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14epSscfNCX%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800/70 text-slate-300 hover:text-white text-xs font-medium uppercase tracking-wider rounded transition-colors shadow-sm">
+                        <a href="https://www.facebook.com/Likethebig1s?mibextid=wwXIfr&amp;rdid=dm9uwdToI6IJKOSj&amp;share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F14epSscfNCX%2F%3Fmibextid%3DwwXIfr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-slate-900/60 hover:bg-slate-800/80 border border-slate-800/70 text-slate-300 hover:text-white text-xs font-medium uppercase tracking-wider rounded transition-colors shadow-sm">
                             <i class="fa-brands fa-facebook text-blue-500 text-sm"></i>
                             <span>Facebook Page</span>
                         </a>
@@ -664,7 +672,7 @@
 
             <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-500">
                 <p>&copy; 2026 Like The Big Ones Construction LLC. All rights reserved.</p>
-                <p class="text-slate-400">Designed & Developed by <span class="text-slate-300 font-medium">Like The Big Ones Construction LLC</span></p>
+                <p class="text-slate-400">Designed &amp; Developed by <span class="text-slate-300 font-medium">Like The Big Ones Construction LLC</span></p>
             </div>
         </div>
     </footer>
@@ -723,6 +731,8 @@
             ajaxForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 const submitBtn = document.getElementById('submit-btn');
+                const formContainer = document.getElementById('contact-form-container');
+                const successCard = document.getElementById('form-success-card');
                 const originalBtnText = submitBtn.innerHTML;
                 submitBtn.innerHTML = 'Sending Request...';
                 submitBtn.disabled = true;
@@ -737,17 +747,20 @@
                     });
 
                     if (response.ok) {
-                        const formContainer = document.getElementById('contact-form-container');
-                        const successCard = document.getElementById('form-success-card');
-
                         formContainer.style.opacity = '0';
-                        setTimeout(() => {
-                            formContainer.classList.add('hidden');
-                            successCard.classList.remove('hidden');
-                            setTimeout(() => {
+                        formContainer.style.transform = 'translateY(-10px)';
+                        await waitForFormTransition(formContainer);
+
+                        formContainer.classList.add('hidden');
+                        successCard.classList.remove('hidden');
+                        successCard.style.opacity = '0';
+                        successCard.style.transform = 'translateY(10px)';
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
                                 successCard.style.opacity = '1';
-                            }, 50);
-                        }, 350);
+                                successCard.style.transform = 'translateY(0)';
+                            });
+                        });
 
                         ajaxForm.reset();
                     } else {
@@ -762,18 +775,41 @@
             });
         }
 
-        function resetContactForm() {
+        function waitForFormTransition(element) {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                return Promise.resolve();
+            }
+
+            return new Promise(resolve => {
+                const timeoutId = setTimeout(finish, 300);
+                function finish(event) {
+                    if (event && (event.target !== element || event.propertyName !== 'opacity')) return;
+                    clearTimeout(timeoutId);
+                    element.removeEventListener('transitionend', finish);
+                    resolve();
+                }
+                element.addEventListener('transitionend', finish);
+            });
+        }
+
+        async function resetContactForm() {
             const formContainer = document.getElementById('contact-form-container');
             const successCard = document.getElementById('form-success-card');
 
             successCard.style.opacity = '0';
-            setTimeout(() => {
-                successCard.classList.add('hidden');
-                formContainer.classList.remove('hidden');
-                setTimeout(() => {
+            successCard.style.transform = 'translateY(-10px)';
+            await waitForFormTransition(successCard);
+
+            successCard.classList.add('hidden');
+            formContainer.classList.remove('hidden');
+            formContainer.style.opacity = '0';
+            formContainer.style.transform = 'translateY(10px)';
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
                     formContainer.style.opacity = '1';
-                }, 50);
-            }, 350);
+                    formContainer.style.transform = 'translateY(0)';
+                });
+            });
         }
 
         function acceptCookies() {
