@@ -338,7 +338,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="glass-card rounded-xl p-6 flex flex-col justify-between reveal-element group">
                     <div>
-                        <img src="images/cocina1.jpg" alt="Kitchen remodeling project" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-lg mb-6">
+                        <button type="button" onclick="openModal('kitchen')" aria-label="View Kitchen Remodeling projects" class="block w-full text-left">
+                            <img src="images/cocina1.jpg" alt="Kitchen remodeling project" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-lg mb-6">
+                        </button>
                         <h3 class="font-serif text-xl font-bold text-white mb-3">Kitchen Remodeling</h3>
                     </div>
                     <button onclick="openModal('kitchen')" class="w-full py-2.5 bg-slate800/80 hover:bg-slate800 text-slate-300 hover:text-white border border-slate700/60 rounded text-xs uppercase font-bold tracking-wider transition-colors flex items-center justify-center gap-2">
@@ -369,7 +371,9 @@
 
                 <div class="glass-card rounded-xl p-6 flex flex-col justify-between reveal-element group">
                     <div>
-                        <img src="custom-project04.jpg" alt="Custom project" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-lg mb-6">
+                        <button type="button" onclick="openModal('deck')" aria-label="View Custom Projects gallery" class="block w-full text-left">
+                            <img src="custom-project04.jpg" alt="Custom project" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-lg mb-6">
+                        </button>
                         <h3 class="font-serif text-xl font-bold text-white mb-3">Custom Projects</h3>
                     </div>
                     <button onclick="openModal('deck')" class="w-full py-2.5 bg-slate800/80 hover:bg-slate800 text-slate-300 hover:text-white border border-slate700/60 rounded text-xs uppercase font-bold tracking-wider transition-colors flex items-center justify-center gap-2">
@@ -577,7 +581,13 @@
         <button onclick="closeLightbox()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-2xl p-2 z-50 bg-slate-900/80 rounded-full w-10 h-10 flex items-center justify-center border border-slate-700">
             <i class="fa-solid fa-xmark"></i>
         </button>
+        <button id="lightbox-prev" type="button" onclick="changeLightboxImage(-1)" aria-label="Previous image" class="hidden absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 bg-slate-900/80 hover:bg-slate-800 text-white rounded-full w-11 h-11 flex items-center justify-center border border-slate-700">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
         <img id="lightbox-img" alt="Zoomed Project" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+        <button id="lightbox-next" type="button" onclick="changeLightboxImage(1)" aria-label="Next image" class="hidden absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 bg-slate-900/80 hover:bg-slate-800 text-white rounded-full w-11 h-11 flex items-center justify-center border border-slate-700">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
     </div>
 
     <!-- BANNER DE COOKIES -->
@@ -917,6 +927,8 @@
             porch: { title: "All-Season Porch Projects", images: ["https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80"] },
             addition: { title: "Home Addition Projects", images: ["https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"] }
         };
+        let lightboxImages = [];
+        let lightboxIndex = 0;
 
         function openModal(category) {
             const modal = document.getElementById('project-modal');
@@ -925,15 +937,16 @@
             const data = projectData[category];
             if (!data) return;
 
+            lightboxImages = data.images;
             modalTitle.textContent = data.title;
             modalContent.innerHTML = data.images.map(img => `
                 <div class="space-y-2">
-                    <div class="rounded-xl overflow-hidden border border-slate800 cursor-pointer group relative" onclick="openLightbox('${img}')">
+                    <button type="button" onclick="openLightbox('${img}')" aria-label="View project image" class="block w-full text-left rounded-xl overflow-hidden border border-slate800 cursor-pointer group relative">
                         <img src="${img}" alt="Project Image" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                         <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                             <i class="fa-solid fa-magnifying-glass-plus text-white text-xl"></i>
                         </div>
-                    </div>
+                    </button>
                     ${data.description ? `<p class="text-sm text-slate-300">${data.description}</p>` : ''}
                 </div>
             `).join('');
@@ -947,13 +960,36 @@
         function openLightbox(imgSrc) {
             const lightbox = document.getElementById('lightbox-modal');
             const lightboxImg = document.getElementById('lightbox-img');
+            const imageIndex = lightboxImages.indexOf(imgSrc);
+            if (imageIndex === -1) {
+                lightboxImages = [imgSrc];
+                lightboxIndex = 0;
+            } else {
+                lightboxIndex = imageIndex;
+            }
             lightboxImg.src = imgSrc;
+            const hasMultipleImages = lightboxImages.length > 1;
+            document.getElementById('lightbox-prev').classList.toggle('hidden', !hasMultipleImages);
+            document.getElementById('lightbox-next').classList.toggle('hidden', !hasMultipleImages);
             lightbox.classList.remove('hidden');
+        }
+
+        function changeLightboxImage(direction) {
+            if (lightboxImages.length < 2) return;
+            lightboxIndex = (lightboxIndex + direction + lightboxImages.length) % lightboxImages.length;
+            document.getElementById('lightbox-img').src = lightboxImages[lightboxIndex];
         }
 
         function closeLightbox() {
             document.getElementById('lightbox-modal').classList.add('hidden');
         }
+
+        document.addEventListener('keydown', (event) => {
+            if (document.getElementById('lightbox-modal').classList.contains('hidden')) return;
+            if (event.key === 'ArrowLeft') changeLightboxImage(-1);
+            if (event.key === 'ArrowRight') changeLightboxImage(1);
+            if (event.key === 'Escape') closeLightbox();
+        });
 
         window.onclick = function(event) {
             const modal = document.getElementById('project-modal');
