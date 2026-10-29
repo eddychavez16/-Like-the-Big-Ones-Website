@@ -341,7 +341,7 @@
                 <div class="glass-card rounded-xl p-6 flex flex-col justify-between reveal-element group">
                     <div>
                         <button type="button" onclick="openModal('kitchen')" aria-label="View Kitchen Remodeling projects" class="block w-full text-left">
-                            <img src="images/cocina1.jpg" alt="Kitchen remodeling project" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-lg mb-6">
+                            <img src="kitchen001.jpg" alt="Kitchen remodeling project" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-lg mb-6">
                         </button>
                         <h3 class="font-serif text-xl font-bold text-white mb-3">Kitchen Remodeling</h3>
                     </div>
@@ -938,7 +938,7 @@
         }
 
         const projectData = {
-            kitchen: { title: "Kitchen Remodeling Projects", description: "Cafeteria", images: ["images/cocina1.jpg"] },
+            kitchen: { title: "Kitchen Remodeling Projects", descriptions: ["Step 1", "Step 2", "Step 3"], images: ["kitchen004.jpg", "kitchen003.jpg.PNG", "kitchen001.jpg"] },
             bathroom: { title: "Bathroom Remodeling Projects", images: ["https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=80"] },
             living: { title: "Living Room Remodeling Projects", images: ["https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"] },
             deck: { title: "Custom Deck Building Projects", images: ["custom-project01.jpg", "custom-project02.jpg", "custom-project03.jpg.png", "custom-project04.jpg"] },
@@ -957,7 +957,7 @@
 
             lightboxImages = data.images;
             modalTitle.textContent = data.title;
-            modalContent.innerHTML = data.images.map(img => `
+            modalContent.innerHTML = data.images.map((img, index) => `
                 <div class="space-y-2">
                     <button type="button" onclick="openLightbox('${img}')" aria-label="View project image" class="block w-full text-left rounded-xl overflow-hidden border border-slate800 cursor-pointer group relative">
                         <img src="${img}" alt="Project Image" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
@@ -965,7 +965,7 @@
                             <i class="fa-solid fa-magnifying-glass-plus text-white text-xl"></i>
                         </div>
                     </button>
-                    ${data.description ? `<p class="text-sm text-slate-300">${data.description}</p>` : ''}
+                    ${data.descriptions?.[index] || data.description ? `<p class="text-sm text-slate-300">${data.descriptions?.[index] || data.description}</p>` : ''}
                 </div>
             `).join('');
             modal.classList.remove('hidden');
