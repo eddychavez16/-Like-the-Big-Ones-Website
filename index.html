@@ -389,7 +389,10 @@
 
                 <div class="glass-card rounded-xl p-6 flex flex-col justify-between reveal-element group">
                     <div>
-                        <h3 class="font-serif text-xl font-bold text-white mb-3">All-Season Porch</h3>
+                        <button type="button" onclick="openModal('porch')" aria-label="View Deck gallery" class="block w-full text-left">
+                            <img src="deck001.jpg" alt="Deck project" loading="lazy" decoding="async" class="w-full h-auto rounded-xl shadow-lg mb-6">
+                        </button>
+                        <h3 class="font-serif text-xl font-bold text-white mb-3">CUSTOM DECKS</h3>
                     </div>
                     <button onclick="openModal('porch')" class="w-full py-2.5 bg-slate800/80 hover:bg-slate800 text-slate-300 hover:text-white border border-slate700/60 rounded text-xs uppercase font-bold tracking-wider transition-colors flex items-center justify-center gap-2">
                         <span>View Projects</span>
@@ -945,7 +948,7 @@
             bathroom: { title: "Bathroom Remodeling Projects", images: ["bano01.jpg", "bano02.jpg"] },
             living: { title: "Living Room Remodeling Projects", images: ["https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80"] },
             deck: { title: "Custom Deck Building Projects", images: ["custom-project01.jpg", "custom-project02.jpg", "custom-project03.jpg.png", "custom-project04.jpg"] },
-            porch: { title: "All-Season Porch Projects", images: ["https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80"] },
+            porch: { title: "Deck Projects", images: ["deck001.jpg", "deck4.jpg", "decks1.jpg", "deck2.jpg", "deck02.jpg", "deck01.jpg"] },
             addition: { title: "Home Addition Projects", images: ["https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80", "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"] }
         };
         let lightboxImages = [];
